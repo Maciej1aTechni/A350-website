@@ -19,11 +19,11 @@ div.photo {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  transition: 0.3s;
 }
 
 div.photo:hover {
   scale: 1.1;
-  transition: 0.3s;
 }
 
 main > div.titlesection {
