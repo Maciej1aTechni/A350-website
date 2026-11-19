@@ -1,0 +1,112 @@
+#navbar {
+  width: 244px;
+  height: 100vh; /* 100% wysokości przeglądrki */
+  border-right: 1px solid #dbdbdb;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 100;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+#navbar > div {
+  flex: 1;
+}
+
+#navbar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#navbar ul a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+#navbar ul a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+#navbar ul li {
+  border-radius: 12px;
+}
+
+#navbar ul li.active {
+  position: relative; /* Wymagane, aby pasek pozycjonował się względem tego elementu */
+  background-color: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+  color: #000000;
+  border-radius: 12px; /* Twoje zaokrąglenie rogów */
+}
+
+/* Tworzymy niezależny pasek obok tekstu */
+#navbar ul li.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%; /* Odsuwa pasek od górnej krawędzi */
+  height: 70%; /* Sprawia, że pasek jest krótszy niż cały element i nie dotyka rogów */
+  width: 5px; /* Szerokość Twojego dawnego bordera */
+  background-color: #0053a0; /* Kolor bordera */
+  border-radius: 2px; /* Opcjonalnie: delikatne zaokrąglenie końców samego paska */
+}
+
+#navbar ul li.active {
+  background-color: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+  color: #000000;
+}
+
+#navbar ul a:active {
+  opacity: 0.5;
+}
+
+#navbar ul a:active img {
+  scale: 0.95;
+}
+
+#navbar > footer {
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  /* 2. Pasek nawigacji: pełna szerokość zamiast 244px, wysokość dopasowana do treści */
+  #navbar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-right: none;
+    border-bottom: 1px solid #dbdbdb;
+    flex-direction: row; /* Ustawia obok siebie logo (header) i listę linków (div) */
+  }
+
+  #navbar > header {
+    padding-right: 25px;
+  }
+
+  /* 3. Lista przycisków: to ona odpowiada za ułożenie linków obok siebie! */
+  #navbar ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Pozwala przyciskom zawinąć się do 2. linii, jeśli zabraknie miejsca */
+    gap: 8px;
+  }
+
+  /* Opcjonalnie: ukrycie stopki "Created by" w górnym pasku na telefonie */
+  #navbar > footer {
+    display: none;
+  }
+}
